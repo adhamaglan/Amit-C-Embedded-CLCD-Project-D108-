@@ -1,7 +1,9 @@
 # ATmega32 Character LCD (CLCD) & Stick-Man Animation Driver
-**Built using my already built drivers and added new folder `CLCD Animation`**
-## Project Discription
-A C-based embedded application for AVR microcontrollers (ATmega32) that renders custom 5x8 pixel animations on LCD configured on `4-bitmode`.
+
+**Built using my already built drivers **[Amit-C-Embedded-D108-](https://github.com/adhamaglan/Amit-C-Embedded-D108-.git)** added new folder `CLCD Animation`** that contains various animation the user can manipulate
+
+## Project Description
+A C-based embedded application for AVR microcontrollers (ATmega32) that renders custom 5x8 pixel bitmapped animations on a 16x2 Character LCD configured in **4-bit mode**
 
 ## 🛠️ How to Build and Run
 
