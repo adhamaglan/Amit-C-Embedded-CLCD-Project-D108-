@@ -8,6 +8,7 @@
 **/Debug/
 **/Release/
 *.elf
+*.hex
 *.eep
 *.map
 *.srec
