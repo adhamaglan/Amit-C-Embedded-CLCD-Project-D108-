@@ -44,25 +44,55 @@ void Animation_voidWave(u8 Copy_u8Waves,u8 Copy_u8x,u8 Copy_u8y)
 
 void Animation_voidWalkAcross(u8 Copy_u8x,u8 Copy_u8y,u8 Copy_u8To_x)
 {
-	for (;Copy_u8x<=Copy_u8To_x;Copy_u8x++)
+	u8 Local_u8Xi=Copy_u8x;
+	u8 Local_u8Xf=Copy_u8To_x;
+	if(Local_u8Xi<Local_u8Xf)
 	{
-		// Alternate between frame 0 and frame 1 on odd/even columns
-		if (Copy_u8x%2==0)
+		for (;Local_u8Xi<=Local_u8Xf;Local_u8Xi++)
 		{
-			// Over-writing index '0' in CLCD_voidSendSpecialChar to save CGRAM
-			CLCD_voidSendSpecialChar(0,stickmanWalkFrame0,Copy_u8x,Copy_u8y);
+			// Alternate between frame 0 and frame 1 on odd/even columns
+			if (Local_u8Xi%2==0)
+			{
+				// Over-writing index '0' in CLCD_voidSendSpecialChar to save CGRAM
+				CLCD_voidSendSpecialChar(0,stickmanWalkFrame0,Local_u8Xi,Copy_u8y);
+			}
+			else
+			{
+				// Over-writing index '1' in CLCD_voidSendSpecialChar to save CGRAM
+				CLCD_voidSendSpecialChar(1,stickmanWalkFrame1,Local_u8Xi,Copy_u8y);
+			}
+			_delay_ms(200);
+			// Clear current frame before shifting to next position
+			CLCD_voidSetCursorPos(Local_u8Xi,Copy_u8y);
+			CLCD_voidSendData(' ');
+			// reset cursor position
+			CLCD_voidSetCursorPos(0,0);
 		}
-		else
+	}else if(Local_u8Xi>Local_u8Xf)
+	{
+		for (;Local_u8Xi>=Local_u8Xf;Local_u8Xi--)
 		{
-			// Over-writing index '1' in CLCD_voidSendSpecialChar to save CGRAM
-			CLCD_voidSendSpecialChar(1,stickmanWalkFrame1,Copy_u8x,Copy_u8y);
+			// Alternate between frame 0 and frame 1 on odd/even columns
+			if (Local_u8Xi%2==0)
+			{
+				// Over-writing index '0' in CLCD_voidSendSpecialChar to save CGRAM
+				CLCD_voidSendSpecialChar(0,stickmanWalkFrame0,Local_u8Xi,Copy_u8y);
+			}
+			else
+			{
+				// Over-writing index '1' in CLCD_voidSendSpecialChar to save CGRAM
+				CLCD_voidSendSpecialChar(1,stickmanWalkFrame1,Local_u8Xi,Copy_u8y);
+			}
+			_delay_ms(200);
+			// Clear current frame before shifting to next position
+			CLCD_voidSetCursorPos(Local_u8Xi,Copy_u8y);
+			CLCD_voidSendData(' ');
+			// reset cursor position
+			CLCD_voidSetCursorPos(0,0);
 		}
-		_delay_ms(200);
-		// Clear current frame before shifting to next position
-		CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
-		CLCD_voidSendData(' ');
-		// reset cursor position
-		CLCD_voidSetCursorPos(0,0);
+	}else
+	{
+		// error
 	}
 }
 
@@ -148,23 +178,91 @@ void Animation_voidDance3(u8 Copy_u8Dances,u8 Copy_u8x,u8 Copy_u8y)
 
 void Animation_voidPlayFootBall(u8 Copy_u8x,u8 Copy_u8y)
 {
-	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
-	CLCD_voidSendSpecialChar(0,stickmanPlayFootballFrame0,Copy_u8x,Copy_u8y);
+	CLCD_voidSendSpecialChar(0,goalpost,Copy_u8x-3,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(1,stickmanPlayFootballFrame0,Copy_u8x,Copy_u8y);
 	_delay_ms(5);
 	CLCD_voidSendSpecialChar(1,stickmanPlayFootballFrame1,Copy_u8x,Copy_u8y);
 	_delay_ms(5);
 	Copy_u8x--;
 	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
-	CLCD_voidSendSpecialChar(2,stickmanPlayFootballFrame2,Copy_u8x,Copy_u8y);
+	CLCD_voidSendSpecialChar(2,ballMovingUpFrame0,Copy_u8x,Copy_u8y);
 	_delay_ms(5);
-	CLCD_voidSendSpecialChar(3,stickmanPlayFootballFrame6,Copy_u8x+1,Copy_u8y);
+	CLCD_voidSendSpecialChar(1,stickmanPlayFootballFrame2,Copy_u8x+1,Copy_u8y);
 	_delay_ms(5);
-	CLCD_voidSendSpecialChar(4,stickmanPlayFootballFrame3,Copy_u8x,Copy_u8y);
+	CLCD_voidSendSpecialChar(2,ballMovingUpFrame1,Copy_u8x,Copy_u8y);
 	_delay_ms(5);
-	CLCD_voidSendSpecialChar(5,stickmanPlayFootballFrame4,Copy_u8x,Copy_u8y);
+	CLCD_voidSendSpecialChar(2,ballMovingUpFrame2,Copy_u8x,Copy_u8y);
 	_delay_ms(5);
-	CLCD_voidSendSpecialChar(6,stickmanPlayFootballFrame5,Copy_u8x,Copy_u8y);
+	CLCD_voidSendSpecialChar(2,ballMovingUpFrame3,Copy_u8x,Copy_u8y);
 	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,ballMovingUpFrame4,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	// Clear current frame before shifting to next position
+	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
+	CLCD_voidSendData(' ');
+	Copy_u8x--;
+	CLCD_voidSendSpecialChar(2,ballMovingDownFrame0,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,ballMovingDownFrame1,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,ballMovingDownFrame2,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,ballMovingDownFrame3,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,ballMovingDownFrame4,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	// Clear current frame before shifting to next position
+	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
+	CLCD_voidSendData(' ');
+	Copy_u8x--;
+	CLCD_voidSendSpecialChar(0,goalFrame0,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(0,goalFrame1,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(0,goalFrame2,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(0,goalFrame3,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	// reset cursor position
+	CLCD_voidSetCursorPos(0,0);
+}
+
+
+
+void Animation_voidShootGun(u8 Copy_u8x,u8 Copy_u8y)
+{
+	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
+	CLCD_voidSendSpecialChar(0,ShootGunFrame0,Copy_u8x,Copy_u8y);
+	CLCD_voidSendSpecialChar(1,Target,Copy_u8x+2,Copy_u8y);
+	_delay_ms(5);
+	Copy_u8x++;
+	CLCD_voidSendSpecialChar(2,Flash,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(0,ShootGunFrame1,Copy_u8x-1,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,BulletMovingFrame0,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,BulletMovingFrame1,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(2,BulletMovingFrame2,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	// Clear current frame before shifting to next position
+	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
+	CLCD_voidSendData(' ');
+	Copy_u8x++;
+	CLCD_voidSendSpecialChar(1,BulletHittingTargetFrame0,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(1,BulletHittingTargetFrame1,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(1,BulletHittingTargetFrame2,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSendSpecialChar(1,BulletHittingTargetFrame3,Copy_u8x,Copy_u8y);
+	_delay_ms(5);
+	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
+	// Clear target frame before shifting to next position
+	CLCD_voidSetCursorPos(Copy_u8x,Copy_u8y);
+	CLCD_voidSendData(' ');
 	// reset cursor position
 	CLCD_voidSetCursorPos(0,0);
 }

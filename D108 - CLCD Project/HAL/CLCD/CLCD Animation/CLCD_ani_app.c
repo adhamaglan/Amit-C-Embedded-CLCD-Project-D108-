@@ -25,6 +25,16 @@ void CLCD_voidDefultAnimation(void)
 	Animation_voidDance1(3,15,1);
 	Animation_voidDance2(3,15,1);
 	Animation_voidDance3(3,15,1);
-	Animation_voidPresent("I can Play    \nFotball       ");
+	Animation_voidPresent("I can Play    \nFootball      ");
 	Animation_voidPlayFootBall(15,1);
+	Animation_voidPresent("I can Shoot   \na gun         ");
+	Animation_voidWalkAcross(15,1,7);
+	Animation_voidShootGun(7,1);
+	Animation_voidWalkAcross(7,1,15);
+	Animation_voidPresent("That's all    \n              ");
+	_delay_ms(500);
+	Animation_voidPresent("Thanks for    \nyour time     ");
+	_delay_ms(500);
+	CLCD_voidClearScreen();
+	CLCD_voidSendString  ("Animation by, \nAdham Younis  ");
 }

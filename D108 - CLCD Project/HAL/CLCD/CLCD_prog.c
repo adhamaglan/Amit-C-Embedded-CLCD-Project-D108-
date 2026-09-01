@@ -66,7 +66,7 @@ void CLCD_voidInit(void)
 		sendEnablePulse();
 		#endif
 		// Display ON/OFF: Display ON, Cursor OFF, Blink OFF 
-		CLCD_voidSendInst(0x0F);
+		CLCD_voidSendInst(0x0C);
 		// Clear Display 
 		CLCD_voidSendInst(0x01);
 }

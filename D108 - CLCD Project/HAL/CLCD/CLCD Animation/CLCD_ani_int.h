@@ -17,7 +17,8 @@ void Animation_voidPresent(const u8 *Copy_u8Str);
 void Animation_voidDance1(u8 Copy_u8Dances,u8 Copy_u8x,u8 Copy_u8y);
 void Animation_voidDance2(u8 Copy_u8Dances,u8 Copy_u8x,u8 Copy_u8y);
 void Animation_voidDance3(u8 Copy_u8Dances,u8 Copy_u8x,u8 Copy_u8y);
-void Animation_voidPlayFootBall(u8 Copy_u8x,u8 Copy_u8y);	// needs 2 empty spots
+void Animation_voidPlayFootBall(u8 Copy_u8x,u8 Copy_u8y);	// needs 4 empty spots
+void Animation_voidShootGun(u8 Copy_u8x,u8 Copy_u8y);		// needs 3 empty spots
 void CLCD_voidDefultAnimation(void);
 
 
