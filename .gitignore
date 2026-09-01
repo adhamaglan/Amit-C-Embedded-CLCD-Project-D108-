@@ -3,14 +3,10 @@
 *.atsuo
 *.suo
 *.user
-*.xml
-*.cproj
-*.atsln
 
 # Build Artifacts & Outputs
 **/Debug/
 **/Release/
-*.hex
 *.elf
 *.eep
 *.map
