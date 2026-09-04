@@ -89,6 +89,11 @@ void Animation_voidWalkAcross(u8 Copy_u8x,u8 Copy_u8y,u8 Copy_u8To_x)
 			CLCD_voidSendData(' ');
 			// reset cursor position
 			CLCD_voidSetCursorPos(0,0);
+			if (Local_u8Xi == Local_u8Xf)
+			{
+				// fixes potential overflow bugs if Local_u8Xf=0
+				break;
+			}
 		}
 	}else
 	{
